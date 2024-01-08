@@ -29,7 +29,6 @@ const Box = ({
   if (height) css["height"] = height;
   if (padding) css["padding"] = padding;
   if (height) css["margin"] = margin;
-  // if (max) css["width"] = "100%";
   if (backgroundColor) css["backgroundColor"] = backgroundColor
 
   return <BoxControll {...props} style={css} />;
