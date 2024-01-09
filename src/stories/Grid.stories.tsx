@@ -31,8 +31,8 @@ export const Circle: Story = {
   render: (arg) => {
     return (
         <Grid spacing={10} container width="500px" style={{ border: "1px solid black" }}>
-          <Grid xs={8} backgroundColor="red"  {...arg}>test1</Grid>
-          <Grid xs={2} backgroundColor="yellow">test2</Grid>
+          <Grid md={8} backgroundColor="red"  {...arg}>test1</Grid>
+          <Grid md={2} backgroundColor="yellow">test2</Grid>
         </Grid>
     );
   },

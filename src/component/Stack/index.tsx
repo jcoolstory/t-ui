@@ -1,20 +1,29 @@
 import styled from "@emotion/styled";
 import Box, { BoxProps } from "../Box";
 
-type StackProps = {
+export type StackProps = {
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
   spacing?: number;
   justifyContent?: string;
   alignItems?: string;
 } & BoxProps;
 
-const Stack = styled(Box)<StackProps>`
+const StackControl = styled(Box)<StackProps>`
   display: flex;
   flex-direction: ${(p => p.direction)};
-  gap: ${(p => p.spacing)};
   justify-content: ${(p => p.justifyContent)};
   align-items: ${(p => p.alignItems)};
 `;
 
+const Stack = ({
+  spacing = 0,
+  style = {},
+  ...props
+}: StackProps) => {
+  const css = { ...style };
+
+  if (spacing) css["gap"] = spacing;
+  return <StackControl style={css} {...props}></StackControl>;
+};
 
 export default Stack;

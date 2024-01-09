@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { ReactHTMLElement } from "react";
 
-const BoxControll = styled.div``;
+const BoxControll = styled.div<BoxProps>`
+  background-color: ${(p => p.backgroundColor)};
+`;
 
 export type BoxProps = {
   type?: "rect" | "round" | "circle";
@@ -9,19 +11,16 @@ export type BoxProps = {
   height?: string ;
   padding?: string;
   margin?: string;
-  max?: boolean;
   backgroundColor?: string ;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const Box = ({
   type = "rect",
   style = {},
-  backgroundColor=undefined,
   width,
   height,
   padding,
   margin,
-  max=false,
   ...props
 }: BoxProps) => {
   const css = { ...style };
@@ -29,7 +28,9 @@ const Box = ({
   if (height) css["height"] = height;
   if (padding) css["padding"] = padding;
   if (height) css["margin"] = margin;
-  if (backgroundColor) css["backgroundColor"] = backgroundColor
+  if (type === "circle") {
+    css["borderRadius"] = "50%";
+  }
 
   return <BoxControll {...props} style={css} />;
 };

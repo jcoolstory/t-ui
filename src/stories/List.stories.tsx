@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Stack from "../component/Stack";
-import Box from "../component/Box";
+import List from "../component/List";
+import ListItem from "../component/ListItem";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Stack",
-  component: Stack,
+  title: "List",
+  component: List,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -15,7 +15,7 @@ const meta = {
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof Stack>;
+} satisfies Meta<typeof List>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,10 +25,10 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {},
   render: (arg) => {
-    return <Stack style={{ border: "1px solid black" }} {...arg}>
-      <Box backgroundColor="red">test1</Box>
-      <Box backgroundColor="blue">test2</Box>
-      <Box backgroundColor="yellow">test3</Box>
-    </Stack>;
+    return <List style={{ border: "1px solid black" }} {...arg}>
+      <ListItem >test1</ListItem>
+      <ListItem >test2</ListItem>
+      <ListItem >test3</ListItem>
+    </List>;
   },
 };
