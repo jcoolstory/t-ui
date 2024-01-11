@@ -35,7 +35,7 @@ export const Primary: Story = {
 
 export const Rect: Story = {
   args: {
-    variant: "react",
+    variant: "rect",
     width: "200px",
     height: "20px"
   },

@@ -39,19 +39,19 @@ export const RectangluarSkeleton = styled(BaseSkeleton)`
 `
 
 type SkeletonProps = {
-    variant: "circular" | "react" | "round",
+    variant: "circular" | "rect" | "round",
     width: string,
     height: string,
     radius?: number,
 }
 
-const Skeleton = ({variant="react", width, height, radius=undefined, ...props}: SkeletonProps) => {
+const Skeleton = ({variant="rect", width, height, radius=undefined, ...props}: SkeletonProps) => {
     if (variant === "circular") 
         return <CircularSkeleton width={width} height={height} {...props} />
-    else if (variant === "react")
-        return <RectangluarSkeleton width={width} height={height} {...props} />
+    else if (variant === "rect")
+        return <BaseSkeleton width={width} height={height} {...props} />
     else
-        return <RectangluarSkeleton width={width} height={height} radius={radius ? radius : 10} {...props}/>
+        return <BaseSkeleton width={width} height={height} radius={radius ? radius : 10} {...props}/>
 }
 
 export default Skeleton
