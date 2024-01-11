@@ -5,7 +5,6 @@ export type ListProps = {
 } & StackProps;
 
 const ListContainer = styled.ul`
-    display: flex;
     padding: 0;
     list-style-type: none;
     margin: 0;

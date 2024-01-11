@@ -25,7 +25,18 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {},
   render: (arg) => {
-    return <List style={{ border: "1px solid black" }} {...arg}>
+    return <List style={{width: 200, border: "1px solid black"}} {...arg}>
+      <ListItem >test1</ListItem>
+      <ListItem >test2</ListItem>
+      <ListItem >test3</ListItem>
+    </List>;
+  },
+};
+
+export const Button: Story = {
+  args: {},
+  render: (arg) => {
+    return <List style={{border: "1px solid black"}} width="200px" padding="20px" spacing={20}  {...arg}>
       <ListItem >test1</ListItem>
       <ListItem >test2</ListItem>
       <ListItem >test3</ListItem>
