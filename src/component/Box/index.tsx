@@ -1,48 +1,66 @@
 import styled from "@emotion/styled";
+import { ReactHTMLElement } from "react";
 
-const BoxControll = styled.div<{ primary?: boolean; disabled?: boolean }>`
-  height: 100px;
-  width: 100px;
-  border: 1px solid ${(props) => (props.primary ? "blue" : "black")};
+const BoxControll = styled.div<BoxProps>`
+  background-color: ${(p => p.backgroundColor)};
 `;
 
-type BoxProps = {
+export type BoxProps = {
   type?: "rect" | "round" | "circle";
-  primary?: boolean
-  style?: React.CSSProperties;
-  children?: React.ReactNode
-} 
-const Box = ({ type = "rect", children, primary }: BoxProps) => {
-    let css: React.CSSProperties = {
+  width?: string ;
+  height?: string ;
+  padding?: string;
+  margin?: string;
+  backgroundColor?: string ;
+} & React.HTMLAttributes<HTMLDivElement>;
 
-    }
+const Box = ({
+  type = "rect",
+  style = {},
+  width,
+  height,
+  padding,
+  margin,
+  ...props
+}: BoxProps) => {
+  const css = { ...style };
+  if (width) css["width"] = width;
+  if (height) css["height"] = height;
+  if (padding) css["padding"] = padding;
+  if (height) css["margin"] = margin;
+  if (type === "circle") {
+    css["borderRadius"] = "50%";
+  }
 
-    if (type === "circle") {
-        css.borderRadius = "50%";
-    } else if (type === "round") {
-        css.borderRadius = "15px"
-    }
-  return (
-    <>
-      <BoxControll style={css} primary={primary}>{children}</BoxControll>
-    </>
-  );
+  return <BoxControll {...props} style={css} />;
 };
 
 type RoundBoxProps = {
-  radius: string;
-};
+  radius: string | number;
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export const RoundBox = ({ radius="20px" }: RoundBoxProps) => {
-  return <Box type="round" style={{ border:"1px solid black", borderRadius: radius }}></Box>;
-};
+type CircleBoxProps = {
+  radius?: string | number;
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export const BoxSample = () => {
+export const RoundBox = ({ radius = "20px", ...props }: RoundBoxProps) => {
   return (
-    <>
-      <BoxControll disabled>stack</BoxControll>
-      <BoxControll primary>stack</BoxControll>
-    </>
+    <Box
+      type="round"
+      style={{ border: "1px solid black", borderRadius: radius }}
+      {...props}
+    />
   );
 };
+
+export const CircleBox = ({ radius = "50%", ...props }: CircleBoxProps) => {
+  return (
+    <Box
+      type="circle"
+      {...props}
+      style={{ border: "1px solid black", borderRadius: "50%" }}
+    />
+  );
+};
+
 export default Box;
