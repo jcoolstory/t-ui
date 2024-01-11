@@ -1,8 +1,8 @@
 import React from 'react';
 import Ripple from './Ripple';
-import { ButtonContiner, ButtonWrap } from './styles/Button.styled';
+import { ButtonContiner, ButtonDivWrap } from './styles/Button.styled';
 
-type ButtonProps = {
+type ButtonBoxProps = {
     type?: "text" | "contained" | "outlined";
     disabled?: boolean
     animate?: boolean
@@ -12,7 +12,7 @@ type ButtonProps = {
     onClick?: () => void 
 }
 
-export const Button = ({ type = "contained", style={} , children, ripple, onClick, ...props }: ButtonProps) => {
+const ButtonBox = ({ type = "contained", style={} , children, ripple, onClick, ...props }: ButtonBoxProps) => {
 
     const handleOnClick = (e:React.MouseEvent) => {
         e.preventDefault();
@@ -23,12 +23,12 @@ export const Button = ({ type = "contained", style={} , children, ripple, onClic
 
     return (
     <ButtonContiner>
-        <ButtonWrap className={type} onClick={handleOnClick} {...props}>
+        <ButtonDivWrap className={type} onClick={handleOnClick} {...props}>
             {ripple ? <Ripple color={"#666"} duration={600} /> : undefined}
             {children}
-        </ButtonWrap>
+        </ButtonDivWrap>
     </ButtonContiner>
     );
 };
 
-export default Button
+export default ButtonBox
