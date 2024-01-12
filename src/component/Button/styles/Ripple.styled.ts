@@ -16,7 +16,7 @@ export const RippleContainer = styled.div<RippleContainerProps>`
     transform: scale(0);
     border-radius: 100%;
     position: absolute;
-    opacity: 0.3;
+    opacity: 0.2;
     background-color: ${props => props.color};
     animation-name: ripple;
     animation-duration: ${props => props.duration}ms;

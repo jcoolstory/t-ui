@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useEffect, forwardRef, RefObject } from "react";
-import { RippleContainer } from "./Ripple.styled";
+import { RippleContainer } from "./styles/Ripple.styled";
 
 type RipplePropsType = {
   color: string,
