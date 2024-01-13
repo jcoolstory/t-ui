@@ -5,7 +5,9 @@ export type ListItemProps = {
   element?: "div" | "button" | "a";
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const ListContainer = styled.li``;
+const ListContainer = styled.li`
+  cursor: pointer;
+`;
 
 const ListItem = ({ element = "div", children, ...props }: ListItemProps) => {
   return (
