@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import List from "../component/List";
 import ListItem from "../component/ListItem";
-import IconButton from "../component/Button/IconButton";
+import ListItemButton from "../component/Button/ListItemButton";
 import { ReactComponent as CreditCardIcon } from "./assets/credit-card.svg";
 import { ReactComponent as BackIcon } from "./assets/bank.svg";
 import { ReactComponent as MoneyBagIcon } from "./assets/money-bag.svg";
@@ -85,25 +85,25 @@ export const ImageButton: Story = {
         {...arg}
       >
         <ListItem>
-          <IconButton style={{ padding: "5px 0" }}>
+          <ListItemButton style={{ padding: "5px 0" }}>
             <LoanIcon width="30" height="30" />
             Text Area
-          </IconButton>
+          </ListItemButton>
         </ListItem>
         <ListItem>
           <Box padding="20px 0">
-            <IconButton style={{ padding: "5px 0" }}>
+            <ListItemButton style={{ padding: "5px 0" }}>
               <MoneyBagIcon width="30" height="30" />
               MoneyBagIcon
-            </IconButton>
+            </ListItemButton>
           </Box>
         </ListItem>
 
         <ListItem>
-          <IconButton style={{ padding: "5px 0" }}>
+          <ListItemButton style={{ padding: "5px 0" }}>
             <BackIcon width="30" height="30" />
             ArrowNextIcon
-          </IconButton>
+          </ListItemButton>
         </ListItem>
       </List>
     );

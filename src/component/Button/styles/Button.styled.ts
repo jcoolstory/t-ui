@@ -11,20 +11,22 @@ export const ButtonContiner = styled.div`
     };
     .outlined {
         background: transparent;
-        border: 2px solid #0064FF;
-        color: #000;
+        border: 1px solid #0064FF;
+        color: #1677FF;
     };
 `
 
-export const ButtonWrap = styled.button<{disabled?: boolean; animate?: boolean}>`
+export const ButtonWrap = styled.button<{
+    disabled?: boolean; 
+    animate?: boolean
+    }>`
+
     overflow: hidden;
     outline: none;
     position: relative;
     cursor: pointer;
 
-    width: 100%;
     border-radius: 10px;
-    padding: 10px;
     border: none;
     box-shadow: none;
 
