@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Drawer from "../component/Drawer";
 import List from "../component/List";
 import ListItem from "../component/ListItem";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
+import SimpleMenu, { SimeMenuItemType } from "../component/SimpleMenu";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -39,35 +40,48 @@ export const Primary: Story = {
     </List>,
   },
   render: (args) => {
-    return <><Drawer style={{ border: "1px solid black" }} {...args}></Drawer>
-    </>;
+    return <Drawer style={{ border: "1px solid black" }} {...args}></Drawer>;
   },
 };
+
+const items: SimeMenuItemType[]  = [
+  {
+    id: "bone",
+    name: "Test",
+  },
+  {
+    id: "bone2",
+    name: "Test2",
+  }
+]
+
+
+const Menu =       <SimpleMenu  padding="10px" items={items} onClickMenu={(e)=>{}} />;
 
 export const Left: Story = {
   args: {
     placement: "top",
-    children: "test",
+    children: Menu,
   },
 };
 
 export const Top: Story = {
   args: {
     placement: "top",
-    children: "test",
+    children: Menu,
   },
 };
 
 export const Right: Story = {
   args: {
     placement: "right",
-    children: "test",
+    children: Menu,
   },
 };
 
 export const Bottom: Story = {
   args: {
     placement: "bottom",
-    children: "test",
+    children: Menu,
   },
 };

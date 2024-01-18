@@ -1,55 +1,52 @@
 
 import styled from "@emotion/styled";
-import { ReactHTMLElement } from "react";
-import { BoxProps } from "../Box";
-import "./style.css"
+
+const DrawerWapper = styled.div`
+ 
+  & .open {
+    transform: translate(0%);
+  }
+`
 
 const DrawerTop = styled.div<DrawerProps>`
-    display: ${ (p) => p.open ? "block" : "none"};
     position: fixed;
     border-bottom: 1px solid #aaa;
     top: 0;
     left: 0;
     right: 0;
-    /* transform: translate(0,-100%); */
-    animation: slideDown 0.5s ease-in;
-    /* bottom: 0; */
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-out;
 `;
 
 const DrawerLeft = styled.div<DrawerProps>`
-    display: ${ (p) => p.open ? "block" : "none"};
     position: fixed;
     border-right: 1px solid #aaa;
     top: 0;
     left: 0;
-    /* right: 0; */
     bottom: 0;
-    animation: slideLeftToRight 0.5s ease-in;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-out;
 `;
 
 const DrawerRight = styled.div<DrawerProps>`
-    display: ${ (p) => p.open ? "block" : "none"};
     position: fixed;
     border-left: 1px solid #aaa;
     top: 0;
-    /* left: 0; */
     right: 0;
     bottom: 0;
-    animation: slideRightToLeft 0.5s ease-in;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out;
 `;
 
 const DrawerBottom = styled.div<DrawerProps>`
-    display: ${ (p) => p.open ? "block" : "none"};
     position: fixed;
     border-top: 1px solid #aaa;
-    /* top: 0; */
-    right: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    animation: slideUp 0.5s ease-in;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
 `;
-
 
 export type DrawerProps = {
   placement?: "top" | "right" | "bottom" | "left"
@@ -64,17 +61,19 @@ const Drawer = ({
   placement = "top",
   padding,
   margin,
+  open=false,
   ...props
 }: DrawerProps) => {
 
+  const className = open ? "open" : "";
   if (placement === "top")  {
-    return <DrawerTop  {...props} />
+    return (<DrawerWapper><DrawerTop className={className} {...props} /></DrawerWapper>)
   } else if (placement === "left") {
-    return <DrawerLeft {...props} />
+    return (<DrawerWapper><DrawerLeft className={className} {...props} /></DrawerWapper>)
   } else if (placement === "right") {
-    return <DrawerRight {...props} />
+    return (<DrawerWapper><DrawerRight className={className}  {...props} /></DrawerWapper>)
   } else if (placement === "bottom") {
-    return <DrawerBottom {...props} />
+    return (<DrawerWapper><DrawerBottom className={className}  {...props} /></DrawerWapper>)
   } 
 };
 
