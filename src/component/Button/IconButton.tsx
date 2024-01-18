@@ -1,38 +1,46 @@
+import React from "react";
 import styled from "@emotion/styled";
-import { number } from "prop-types";
-import React, { useEffect, useState } from "react";
-import ButtonBox from "./ButtonBox";
+import Button, { ButtonProps } from ".";
 
-const IconButtonWarp = styled.div<{columns : number}>`
-    display: grid;
-    grid-template-columns:
-        ${(props) => props.columns && props.columns > 2 ? 
-        `auto 1fr repeat(${props.columns - 2}, auto)` : 
-        'auto 1fr'};
-    justify-content: center;
+const IconButtonWrap = styled.span<{gap?: number}>`
+    display: inline-flex;
     align-items: center;
-    padding: 0 10px;
-    gap: 15px;
+    justify-content: center;
+    color: inherit;
+    padding: 5px 3px;
+    gap: ${(props) => props.gap}px;
 `
 
 type IconButtonTypes = {
-    width?: string | number,
-    height?: string | number,
-    children: React.ReactNode,
-    style?: React.CSSProperties,
-}
+    width?: string | number;
+    height?: string | number;
+    color?: string;
+    gap?: number;
+    icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    style?: React.CSSProperties;
+} & ButtonProps
 
-const IconButton = ({width, height, children, style} : IconButtonTypes) => {
-    const childCount = React.Children.count(children);
+const IconButton = ({
+    width=24,
+    height=24,
+    gap=5,
+    icon: Icon, 
+    children,
+    style,
+    ...props
+    } : IconButtonTypes) => {
 
-    return(
-        <ButtonBox type='text' animate ripple>
-            <IconButtonWarp style={{width, height, ...style}} columns={childCount}>
+    return (
+        <Button background='#eee' {...props}>
+            <IconButtonWrap gap={gap} style={style}>
+                <Icon 
+                    width={width}
+                    height={height}
+                />
                 {children}
-            </IconButtonWarp>
-        </ButtonBox>
+            </IconButtonWrap>
+        </Button>
     );
 };
 
-
-export default IconButton;
+export default IconButton

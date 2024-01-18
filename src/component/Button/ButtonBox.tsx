@@ -1,3 +1,4 @@
+import styled from '@emotion/styled/types/base';
 import React from 'react';
 import Ripple from './Ripple';
 import { ButtonContiner, ButtonDivWrap } from './styles/Button.styled';
@@ -12,7 +13,14 @@ type ButtonBoxProps = {
     onClick?: () => void 
 }
 
-const ButtonBox = ({ type = "contained", style={} , children, ripple, onClick, ...props }: ButtonBoxProps) => {
+const ButtonBox = ({
+    type = "contained", 
+    style={} , 
+    children, 
+    ripple, 
+    onClick, 
+    ...props 
+    }: ButtonBoxProps) => {
 
     const handleOnClick = (e:React.MouseEvent) => {
         e.preventDefault();
@@ -23,7 +31,7 @@ const ButtonBox = ({ type = "contained", style={} , children, ripple, onClick, .
 
     return (
     <ButtonContiner>
-        <ButtonDivWrap className={type} onClick={handleOnClick} {...props}>
+        <ButtonDivWrap className={type} onClick={handleOnClick} style={{...style}} {...props}>
             {ripple ? <Ripple color={"#666"} duration={600} /> : undefined}
             {children}
         </ButtonDivWrap>
