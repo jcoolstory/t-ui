@@ -72,7 +72,7 @@ const Drawer = ({
     return (<DrawerWapper><DrawerLeft className={className} {...props} /></DrawerWapper>)
   } else if (placement === "right") {
     return (<DrawerWapper><DrawerRight className={className}  {...props} /></DrawerWapper>)
-  } else if (placement === "bottom") {
+  } else {  //placement === "bottom"
     return (<DrawerWapper><DrawerBottom className={className}  {...props} /></DrawerWapper>)
   } 
 };

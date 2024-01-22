@@ -4,12 +4,10 @@ import { ListContainer } from "./styles";
 
 export type ListProps = {} & StackProps;
 
-
-
 const List = ({ children, ...props }: ListProps) => {
   return (
     <ListContainer>
-      <Stack {...props} direction="column">
+      <Stack direction="column"  {...props}>
         {children}
       </Stack>
     </ListContainer>
