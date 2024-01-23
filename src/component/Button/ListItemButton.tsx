@@ -11,7 +11,7 @@ const ListItemButtonWarp = styled.div<{columns : number}>`
     justify-content: center;
     align-items: center;
     padding: 0 10px;
-    gap: 15px
+    gap: 15px;
 `
 
 type ListItemButtonTypes = {

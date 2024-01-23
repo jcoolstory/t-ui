@@ -58,13 +58,11 @@ export const ButtonList: Story = {
         </Button>
       </ListItem>
       <ListItem>
-        {" "}
         <Button type="text" ripple>
           Text Area
         </Button>
       </ListItem>
       <ListItem>
-        {" "}
         <Button type="text" ripple>
           Text Area
         </Button>
