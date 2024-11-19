@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
-import { ReactHTMLElement } from "react";
-
 const BoxControll = styled.div<BoxProps>`
   background-color: ${(p => p.backgroundColor)};
 `;
 
 export type BoxProps = {
-  type?: "rect" | "round" | "circle";
+  type?: "rect" | "circle";
   width?: string ;
   height?: string ;
   padding?: string;
@@ -37,28 +35,25 @@ const Box = ({
 
 type RoundBoxProps = {
   radius: string | number;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & BoxProps;
 
 type CircleBoxProps = {
-  radius?: string | number;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export const RoundBox = ({ radius = "20px", ...props }: RoundBoxProps) => {
+export const RoundBox = ({ radius = "20px", style, ...props }: RoundBoxProps) => {
   return (
-    <Box
-      type="round"
-      style={{ border: "1px solid black", borderRadius: radius }}
+    <BoxControll
+      style={{borderRadius: radius, ...style}}
       {...props}
     />
   );
 };
 
-export const CircleBox = ({ radius = "50%", ...props }: CircleBoxProps) => {
+export const CircleBox = (props: CircleBoxProps) => {
   return (
     <Box
       type="circle"
       {...props}
-      style={{ border: "1px solid black", borderRadius: "50%" }}
     />
   );
 };
