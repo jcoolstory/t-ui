@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Box, { CircleBox, RoundBox } from "../component/Box";
+import React from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -44,7 +45,7 @@ export const Small: Story = {
 export const Round: Story = {
   args: {},
   render: () => {
-    return <RoundBox radius={15}>Round</RoundBox>;
+    return <RoundBox radius={15} >Round</RoundBox>;
   },
 };
 

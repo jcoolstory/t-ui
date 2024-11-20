@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import List from "../component/List";
 import ListItem from "../component/ListItem";
 import ListItemButton from "../component/Button/ListItemButton";
-import { ReactComponent as CreditCardIcon } from "./assets/credit-card.svg";
 import { ReactComponent as BackIcon } from "./assets/bank.svg";
 import { ReactComponent as MoneyBagIcon } from "./assets/money-bag.svg";
 import { ReactComponent as LoanIcon } from "./assets/mortgage-loan.svg";

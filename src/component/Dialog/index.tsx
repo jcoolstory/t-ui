@@ -48,7 +48,7 @@ const Dialog = ({
   children,
   ...props
 }: DialogProps) => {
-  if (!open) return;
+  if (!open) return null;
   return (
     <DialogWrapper {...props}>
       <Dim></Dim>
